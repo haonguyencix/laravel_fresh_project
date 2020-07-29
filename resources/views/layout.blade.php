@@ -31,11 +31,9 @@ Released   : 20140225
       </div>
       <div id="menu">
         <ul>
-          <li class="{{ Request::path() === '/' ? 'current_page_item' : '' }}"><a href="/" accesskey="1" title="">Homepage</a></li>
-          <li><a href="#" accesskey="2" title="">Our Clients</a></li>
-          <li class="{{ Request::path() === 'about' ? 'current_page_item' : '' }}"><a href="/about" accesskey="3" title="">About Us</a></li>
-          <li><a href="#" accesskey="4" title="">Careers</a></li>
-          <li><a href="#" accesskey="5" title="">Contact Us</a></li>
+          <li class="{{ Request::path() === 'home' ? 'current_page_item' : '' }}"><a href="{{route('home')}}" accesskey="1">Homepage</a></li>
+          <li><a href="#" accesskey="2">{{ session('credential') }}</a></li>
+          <li><a href="{{route('logout')}}" accesskey="3">Logout</a></li>
         </ul>
       </div>
     </div>

@@ -28,9 +28,17 @@ use Illuminate\Support\Facades\Route;
 //     ]);
 // });
 
-Route::view('/', 'login');
-Route::post('/login', 'LoginController@login');
-Route::view('/home', 'home');
+Route::view('/', 'login')->name('login');
+Route::view('/register', 'register')->name('register');
+Route::view('/forgot-password', 'forgot-password')->name('forgot-password');
+Route::get('/reset-password/{token}', 'LoginController@checkToken')->name('check-reset-password');
+Route::view('/reset-password', 'reset-password')->name('reset-password');
+Route::view('/home', 'home')->name('home');
+Route::post('/login-post', 'LoginController@login')->name('login-post');
+Route::post('/register-post', 'LoginController@register')->name('register-post');
+Route::post('/forgot-password-post', 'LoginController@forgotPassword')->name('forgot-password-post');
+Route::post('/reset-password-post', 'LoginController@resetPassword')->name('reset-password-post');
+Route::get('/logout', 'LoginController@logout')->name('logout');
 // Route::get('/about', function() {
 //   return view('about', [
 //     'articles' => App\Article::take(3)->latest()->get()

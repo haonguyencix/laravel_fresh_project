@@ -15,7 +15,7 @@
 <body>
   <section id="login-form">
     <div class="container">
-      @yield('login-form')
+      @yield('authen-form')
     </div>
   </section>
 

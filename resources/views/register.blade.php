@@ -2,9 +2,23 @@
 
 @section('authen-form')
 <div class="form-wrapper">
-  <h1 class="text-center mb-4">Login</h1>
-  <form method="POST" action="{{route('login-post')}}">
+  <h1 class="text-center mb-4">Register</h1>
+  <form method="POST" action="{{route('register-post')}}">
     @csrf
+    <div class="form-group">
+      <input 
+        name="name" 
+        placeholder="Name" 
+        type="text"
+        class="form-control @if($errors->has('name')) is-invalid @endif" 
+        value="{{ old('name') }}"
+        {{-- required --}}
+      > 
+
+      @if($errors->has('name'))
+        <p class="text-danger">{{ $errors->first('name') }}</p>
+      @endif
+    </div>
     <div class="form-group">
       <input 
         name="email" 
@@ -33,13 +47,10 @@
         <p class="text-danger">{{ $errors->first('password') }}</p>
       @endif
     </div>
-    <button type="submit" class="btn btn-success w-100 mb-2">Đăng nhập</button>
-    <a class="mb-2 d-block" href="{{route('register')}}">Bạn chưa có tài khoản?</a>
-    <a class="mb-2 d-block" href="{{route('forgot-password')}}">Bị quên mật khẩu?</a>
-    @if(session('fail'))
-      <p class="text-danger">{{ session('fail') }}</p>
-    @elseif(session('register-success'))
-      <p class="text-success">{{ session('register-success') }}</p>
+    <button type="submit" class="btn btn-warning w-100 mb-2">Đăng ký</button>
+    <a class="mb-2 d-block" href="{{route('login')}}">Về trang đăng nhập</a>
+    @if(session('register-fail'))
+      <p class="text-danger">{{ session('register-fail') }}</p>
     @endif
   </form>
 </div>
