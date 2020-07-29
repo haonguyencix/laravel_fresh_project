@@ -941,3 +941,26 @@ ul.contact li a.icon-rss:before
 {
 	float: right;
 }
+
+.avt-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.author, .article-description, .article-body {
+  font-size: 18px;
+}
+
+.article-body p {
+  margin-bottom: 12px;
+}
+
+.article-body a {
+  text-decoration: underline;
+}
+
+.article-body strong {
+  font-weight: bold;
+}

@@ -39,8 +39,13 @@ Route::post('/register-post', 'LoginController@register')->name('register-post')
 Route::post('/forgot-password-post', 'LoginController@forgotPassword')->name('forgot-password-post');
 Route::post('/reset-password-post', 'LoginController@resetPassword')->name('reset-password-post');
 Route::get('/logout', 'LoginController@logout')->name('logout');
-// Route::get('/about', function() {
-//   return view('about', [
-//     'articles' => App\Article::take(3)->latest()->get()
-//   ]);
-// });
+
+Route::get('/about', function() {
+  return view('about', [
+    'articles' => App\Article::take(3)->latest()->get()
+  ]);
+});
+Route::get('/articles', 'ArticlesController@index')->name('articles');
+Route::post('/articles', 'ArticlesController@store')->name('store-article');
+Route::get('/articles/create', 'ArticlesController@create')->name('create-article');
+Route::get('/articles/{article}', 'ArticlesController@show');
