@@ -30,19 +30,18 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
   <div id="header-wrapper">
     <div id="header" class="container">
       <div id="logo">
-        <h1><a href="/">HaroBlog</a></h1>
+        <h1><a href="{{ route('home') }}">HaroBlog</a></h1>
       </div>
       <div id="menu">
         <ul>
           <li class="{{ Request::path() === 'home' ? 'current_page_item' : '' }}"><a href="{{route('home')}}" accesskey="1">Homepage</a></li>
           <li class="{{ Request::path() === 'about' ? 'current_page_item' : '' }}"><a href="/about" accesskey="2" title="">About Us</a></li>
           <li class="{{ Request::path() === 'articles' ? 'current_page_item' : '' }}"><a href="/articles" accesskey="3" title="">Articles</a></li>
-          <li><a href="#" accesskey="4">{{ session('credential') }}</a></li>
+          <li><a href="#" accesskey="4">{{ session('user_name') }}</a></li>
           <li><a href="{{route('logout')}}" accesskey="5">Logout</a></li>
         </ul>
       </div>
     </div>
-    @yield('header-featured')
   </div>
   @yield('content')
   <div id="copyright" class="container">

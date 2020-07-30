@@ -27,15 +27,17 @@ class LoginController extends Controller
     $validCredentials = Hash::check(request('password'), $user->getAuthPassword());
 
     if ($validCredentials) {
-      session(['credential' => $user->name]);
+      session(['credential' => $user->id]);
+      session(['user_name' => $user->name]);
       return redirect('/home');
     }
     return redirect('/')->with('fail', 'Email hoặc mật khẩu không đúng!');
   }
   public function logout(Request $req)
   {
-    if($req->session()->has('credential')) {
+    if($req->session()->has('credential') and $req->session()->has('user_name')) {
       $req->session()->forget('credential');
+      $req->session()->forget('user_name');
     }
     return redirect('');
   }
